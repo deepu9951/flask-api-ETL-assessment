@@ -1,0 +1,140 @@
+CREATE SCHEMA IF NOT EXISTS e_commerce AUTHORIZATION CURRENT_USER;    --IF NOT EXISTS
+
+CREATE TABLE IF NOT EXISTS e_commerce.dim_customer(
+customer_id TEXT PRIMARY KEY NOT NULL,
+first_name TEXT NOT NULL,
+surname TEXT NOT NULL,
+email_id TEXT UNIQUE,
+account_status TEXT CHECK (account_status IN ('archived','active','suspended'))
+);
+
+--TRUNCATE e_commerce.dim_customer, e_commerce.dim_orders
+
+INSERT INTO e_commerce.dim_customer (customer_id, first_name,surname, email_id, account_status)
+VALUES
+('CUST-01','Shelby','Terrell','elijah57@example.net','active'),
+('CUST-02','Phillip','Summers','bethany14@example.com','active'),
+('CUST-03','Kristine','Travis','bthompson@example.com','suspended'),
+('CUST-04','Yesenia','Martinez','kaitlinkaiser@example.com','active'),
+('CUST-05','Lori','Todd','buchananmanuel@example.net','archived'),
+('CUST-06','Erin','Day','tconner@example.org','active'),
+('CUST-07','Katherine','Buck','conniecowan@example.com','active'),
+('CUST-08','Ricardo','Hinton','wyattbishop@example.com','suspended'),
+('CUST-09','Dave','Farrell','nmccann@example.net','active'),
+('CUST-10','Isaiah','Downs','virginiaterrell@example.org','archived'),
+('CUST-11','Sheila','Ross','huangcathy@example.com','active'),
+('CUST-12','Stacy','Newton','rayleroy@example.org','active'),
+('CUST-13','Mandy','Blake','jefferynoble@example.org','suspended'),
+('CUST-14','Bridget','Nash','mercedes44@example.com','active'),
+('CUST-15','Crystal','Farmer','pmiranda@example.org','active'),
+('CUST-16','Thomas','Knight','braunpriscilla@example.net','archived'),
+('CUST-17','Maurice','Rangel','sheenabanks@example.com','active'),
+('CUST-18','Frank','Meadows','gbrewer@example.org','active'),
+('CUST-19','Alvin','Paul','gilbertdonaldson@example.com','suspended'),
+('CUST-20','Jared','Mitchell','jcortez@example.com','active'),
+('CUST-21','Jacqueline','Norton','carias@example.net','archived'),
+('CUST-22','Colleen','Hatfield','fknox@example.org','active'),
+('CUST-23','Randy','Barnes','huangbill@example.org','active'),
+('CUST-24','Janice','Rhodes','juarezdominique@example.net','suspended')
+ON CONFLICT (customer_id) DO UPDATE
+SET
+	customer_id = EXCLUDED.customer_id,
+	first_name = EXCLUDED.first_name,
+	surname = EXCLUDED.surname,
+	email_id = EXCLUDED.email_id,
+	account_status = EXCLUDED.account_status; 
+
+-- select * from e_commerce.dim_customer;
+
+CREATE TABLE IF NOT EXISTS e_commerce.dim_orders(
+order_id TEXT PRIMARY KEY NOT NULL,
+product_name TEXT NOT NULL,
+prod_qty INT NOT NULL CHECK (prod_qty >= 1),
+unit_price NUMERIC(12,2) NOT NULL CHECK (unit_price >=0),
+cust_id TEXT, CONSTRAINT fk_order_customer
+	FOREIGN KEY (cust_id)
+	REFERENCES e_commerce.dim_customer(customer_id)
+	ON DELETE SET NULL
+);
+
+INSERT INTO e_commerce.dim_orders (order_id, product_name, prod_qty, unit_price, cust_id)
+VALUES
+('ORD-01','Wireless Mouse',2,19.99,'CUST-16'),
+('ORD-02','USB Keyboard',1,29.99,'CUST-17'),
+
+('ORD-03','Laptop Stand',1,39.99,'CUST-13'),
+('ORD-04','USB-C Hub',2,24.50,'CUST-23'),
+
+('ORD-05','External SSD 1TB',1,109.99,'CUST-12'),
+('ORD-06','HDMI Cable',3,9.99,'CUST-11'),
+
+('ORD-07','Gaming Headset',1,59.99,'CUST-03'),
+('ORD-08','Mouse Pad XL',2,14.99,'CUST-01'),
+
+('ORD-09','Webcam 1080p',1,49.99,'CUST-07'),
+('ORD-10','Desk Lamp LED',1,22.50,'CUST-16'),
+
+('ORD-11','Portable Charger',2,27.99,'CUST-01'),
+('ORD-12','USB-A Cable',3,6.99,'CUST-02'),
+
+('ORD-13','Bluetooth Speaker',1,45.00,'CUST-03'),
+('ORD-14','Aux Cable',2,5.99,'CUST-03'),
+
+('ORD-15','Mechanical Keyboard',1,89.99,'CUST-03'),
+('ORD-16','Keycap Set',1,29.99,'CUST-04'),
+
+('ORD-17','27in Monitor',1,229.99,'CUST-05'),
+('ORD-18','DisplayPort Cable',2,12.99,'CUST-06'),
+
+('ORD-19','Laptop Sleeve',1,18.99,'CUST-06'),
+('ORD-20','Cleaning Kit',1,11.50,'CUST-07'),
+
+('ORD-21','Router WiFi 6',1,129.99,'CUST-08'),
+('ORD-22','Ethernet Cable',4,4.99,'CUST-09'),
+
+('ORD-23','Graphic Tablet',1,79.99,'CUST-09'),
+('ORD-24','Stylus Pen',1,24.99,'CUST-10'),
+
+('ORD-25','Docking Station',1,99.99,'CUST-12'),
+('ORD-26','USB-C Cable',2,12.49,'CUST-11'),
+
+('ORD-27','Portable Monitor',1,189.99,'CUST-13'),
+('ORD-28','Screen Protector',2,8.99,'CUST-12'),
+
+('ORD-29','Smart Plug',2,16.99, 'CUST-13'),
+('ORD-30','Extension Cord',1,14.50,'CUST-14'),
+
+('ORD-31','Noise Cancelling Headphones',1,199.99,'CUST-15'),
+('ORD-32','Headphone Stand',1,19.99,'CUST-18'),
+
+('ORD-33','Watch Charger',1,14.99,'CUST-17'),
+
+('ORD-34','Tablet 10in',1,219.99,'CUST-16'),
+('ORD-35','Tablet Case',1,17.99,'CUST-19'),
+
+('ORD-36','VR Controller Grip',2,15.99,'CUST-17'),
+
+('ORD-37','Action Camera',1,249.99,'CUST-18'),
+('ORD-38','Camera Mount',2,13.99,'CUST-19'),
+
+('ORD-39','Tripod Stand',1,34.99,'CUST-20'),
+('ORD-40','Phone Clamp',1,9.99,'CUST-21'),
+
+('ORD-41','Smart Light Bulb',3,12.99,'CUST-22'),
+('ORD-42','Light Switch Smart',1,24.99,'CUST-22'),
+
+('ORD-43','Fitness Tracker',1,59.99,'CUST-24'),
+('ORD-44','Replacement Band',2,7.99,'CUST-23'),
+
+('ORD-45','Mini Projector',1,179.99,'CUST-23'),
+('ORD-46','Projector Screen',1,49.99,'CUST-23')
+
+ON CONFLICT (order_id) DO UPDATE
+SET
+	order_id = EXCLUDED.order_id,
+	product_name = EXCLUDED.product_name,
+	prod_qty = EXCLUDED.prod_qty,
+	unit_price = EXCLUDED.unit_price,
+	cust_id = EXCLUDED.cust_id; 
+
+-- select * from e_commerce.dim_orders;
