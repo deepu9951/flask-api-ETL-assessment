@@ -69,3 +69,8 @@ Run the following command in the same virtual environment in a separate terminal
 streamlit run streamlit_app.py
 ```
 The Streamlit application will be running on http://localhost:8501/
+
+## Improvements
+1. Using UUID for storing unique customer and order details.
+2. Scalability
+3. Implementing unit test cases in the code repository
