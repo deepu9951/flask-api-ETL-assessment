@@ -26,10 +26,10 @@ The ingestion script reads both CSVs using pandas, validates the expected column
 
   An additional endpoint is provided specifically to return order details for active customers only, joining across both tables.
 
-Stage 5 — Frontend (streamlit_app.py)
+- Stage 5 — Frontend (streamlit_app.py)
   The Streamlit app calls the Flask API endpoints over HTTP and renders the JSON responses as interactive tables.
 
-Stage 6 — Export (etl_script.py)
+- Stage 6 — Export (etl_script.py)
   The ETL export script queries the database directly, transforms or aggregates the data as needed, and writes the output to a CSV file.
 
 
