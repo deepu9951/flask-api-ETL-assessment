@@ -29,6 +29,7 @@ print(response.json())
 customer_ids = pd.DataFrame(response.json())
 customer_id_options = st.selectbox('Unique Customers', customer_ids)
 st.write('You selected:', customer_id_options)
+#st.data_editor(customer_ids, column_order=("order_id", "product_name", "prod_qty", "unit_price", "cust_id"))
 
 
 # http://127.0.01:5000/ is from the flask api

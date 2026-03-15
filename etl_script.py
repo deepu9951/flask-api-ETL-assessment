@@ -27,7 +27,7 @@ def data_loading():
         where c.account_status = 'active'
         """
         cursor.execute(query)
-        with open("orders.csv", "w", newline="") as f:
+        with open("output_data/orders.csv", "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([desc[0] for desc in cursor.description])
             for row in cursor:

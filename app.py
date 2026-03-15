@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
 import psycopg2
-import logging
 import os
-import requests
 
 
 load_dotenv()
@@ -40,6 +38,7 @@ def get_all_customers():
         cursor = conn.cursor()
         cursor.execute("SELECT customer_id FROM e_commerce.dim_customer;")
         results = cursor.fetchall()
+        print(results)
         formatted_results = []
         for row in results:
             order = {
