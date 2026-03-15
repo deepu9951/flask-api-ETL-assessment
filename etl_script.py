@@ -1,7 +1,4 @@
 from app import get_db_connection
-import psycopg2
-import logging
-import os
 import csv
 
 
@@ -27,7 +24,7 @@ def data_loading():
         where c.account_status = 'active'
         """
         cursor.execute(query)
-        with open("output_data/orders.csv", "w", newline="") as f:
+        with open("orders.csv", "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerow([desc[0] for desc in cursor.description])
             for row in cursor:
