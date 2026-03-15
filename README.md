@@ -15,22 +15,22 @@ In this assessment, streamlit is chosen as the frontend layer for prototyping ap
 ## Application Data Flow Achitecture
 The architecture is organized into the following stages.
 
-Stage 1 — Raw Data (Source)
+- Stage 1 — Raw Data (Source)
 The sample data originates from two CSV files, customer_dataset.csv and order_dataset.csv, stored in the data/ directory. These files contain the raw customer and order records that feed the entire pipeline.
 
-Stage 2 — ETL Ingestion (data_preparation.py)
+- Stage 2 — ETL Ingestion (data_preparation.py)
 The ingestion script reads both CSVs using pandas, validates the expected columns. It then connects to PostgreSQL and first executes SQL file to execute the Data Defininition commands to create the relevant schema and the required tables. Data records are then loaded into the respective tables using batch upserts ensuring no duplicates are introduced on repeat runs. The database acts as the single source of truth for all downstream layers.
 
-Stage 3 - REST API (app.py)
-The Flask application connects to PostgreSQL and exposes the stored data as REST endpoints. The following endpoint queries the relevant table and returns the results as JSON. 
+- Stage 3 — REST API (app.py)
+  The Flask application connects to PostgreSQL and exposes the stored data as REST endpoints. The following endpoint queries the relevant table and returns the   results as JSON. 
 
-An additional endpoint is provided specifically to return order details for active customers only, joining across both tables.
+  An additional endpoint is provided specifically to return order details for active customers only, joining across both tables.
 
 Stage 5 — Frontend (streamlit_app.py)
-The Streamlit app calls the Flask API endpoints over HTTP and renders the JSON responses as interactive tables.
+  The Streamlit app calls the Flask API endpoints over HTTP and renders the JSON responses as interactive tables.
 
 Stage 6 — Export (etl_script.py)
-The ETL export script queries the database directly, transforms or aggregates the data as needed, and writes the output to a CSV file.
+  The ETL export script queries the database directly, transforms or aggregates the data as needed, and writes the output to a CSV file.
 
 
 ## 1.Clone the repository
