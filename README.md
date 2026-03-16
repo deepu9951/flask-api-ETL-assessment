@@ -79,7 +79,14 @@ streamlit run streamlit_app.py
 - The Streamlit application will be running on http://localhost:8501/
 - The application will be acting as a frontend layer to render the responses for the previously defined APIs.
 
+## 7 . Task 3: ETL Script
+Run the following command in the same virtual environment in a separate terminal to run the ETL script
+```
+python etl_script.py
+```
+
 ## Improvements
 1. Using UUID for storing unique customer and order details.
 2. Implementing unit test cases in the code repository.
-3. Improving the efficiency of the source code  
+3. To schedule the ETL tasks using Task Scheduler (in Windows) or Cron Jobs (in Unix). Apache Airflow could also be utilized.  
+4. Improving the efficiency of the source code.
