@@ -36,7 +36,7 @@ The ingestion script reads both CSVs using pandas, validates the expected column
 ## Run Application Locally
 Prerequisites: Before running the following steps, it is assumed that Python and PostgreSQL is installed.
 
-## 1.Clone the repository
+## 1. Clone the repository
 ```
 git clone https://github.com/deepu9951/flask-api-ETL-assessment.git
 cd flask-api-ETL-assessment
