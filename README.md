@@ -34,7 +34,7 @@ The ingestion script reads both CSVs using pandas, validates the expected column
 
 
 ## Run Application Locally
-Prerequisites: Before running the following steps, it is assumed that Python and PostgreSQL is installed. On the command prompt, execute the steps sequentially
+Prerequisites: Before running the following steps, it is assumed that Python and PostgreSQL is installed. Execute the commands on the command prompt by following the steps sequentially
 
 ## 1. Clone the repository
 ```
