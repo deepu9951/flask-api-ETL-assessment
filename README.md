@@ -68,16 +68,16 @@ python app.py
 The Flask application will be running on http://127.0.0.1:5000
 
 # APIs Defined
-http://127.0.0.1:5000/ -- gives the unique customer IDs
-http://127.0.0.1:5000/orders/<customer_id> -- Gives the order details by the specified customer_id
-http://127.0.0.1:5000/customers/active -- Returns the order details of active customers
+- http://127.0.0.1:5000/ -- gives the unique customer IDs
+- http://127.0.0.1:5000/orders/<customer_id> -- Gives the order details by the specified customer_id
+- http://127.0.0.1:5000/customers/active -- Returns the order details of active customers
 
 Run the following command in the same virtual environment in a separate terminal to run the streamlit application
 ```
 streamlit run streamlit_app.py
 ```
-The Streamlit application will be running on http://localhost:8501/
-The application will be acting as a frontend layer to render the responses for the previously defined APIs.
+- The Streamlit application will be running on http://localhost:8501/
+- The application will be acting as a frontend layer to render the responses for the previously defined APIs.
 
 ## Improvements
 1. Using UUID for storing unique customer and order details.
