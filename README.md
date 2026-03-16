@@ -53,11 +53,19 @@ etl_uosh_tasks\Scripts\activate
 ```
 pip install -r requirements.txt
 ```
-## 5 . Task 1: Set up Databases
+## 5. Update the .env file
+
+POSTGRES_HOST =  <host_name>     <br />
+POSTGRES_PORT = 5432 (Typically) <br />
+POSTGRES_DB =  <your_database_name>       <br />
+POSTGRES_USER = <your_database_username>
+POSTGRES_PASSWORD = <your_password>
+
+## 6 . Task 1: Set up Databases
 ```
 python data_preparation.py
 ```
-## 6 . Task 2: List the REST APIs
+## 7 . Task 2: List the REST APIs
 The project uses streamlit as a front-end that enables the users to render the API responses dynamically. An extra API is also developed to render the order details of active customers.
 
 
@@ -79,7 +87,7 @@ streamlit run streamlit_app.py
 - The Streamlit application will be running on http://localhost:8501/
 - The application will be acting as a frontend layer to render the responses for the previously defined APIs.
 
-## 7 . Task 3: ETL Script
+## 8 . Task 3: ETL Script
 Run the following command in the same virtual environment in a separate terminal to run the ETL script
 ```
 python etl_script.py
