@@ -33,6 +33,9 @@ The ingestion script reads both CSVs using pandas, validates the expected column
   The ETL export script queries the database directly, transforms or aggregates the data as needed, and writes the output to a CSV file.
 
 
+## Run Application Locally
+Prerequisites: Before running the following steps, it is assumed that Python and PostgreSQL is installed.
+
 ## 1.Clone the repository
 ```
 git clone https://github.com/deepu9951/flask-api-ETL-assessment.git
@@ -64,13 +67,19 @@ python app.py
 ```
 The Flask application will be running on http://127.0.0.1:5000
 
+# APIs Defined
+http://127.0.0.1:5000/ -- gives the unique customer IDs
+http://127.0.0.1:5000/orders/<customer_id> -- Gives the order details by the specified customer_id
+http://127.0.0.1:5000/customers/active -- Returns the order details of active customers
+
 Run the following command in the same virtual environment in a separate terminal to run the streamlit application
 ```
 streamlit run streamlit_app.py
 ```
 The Streamlit application will be running on http://localhost:8501/
+The application will be acting as a frontend layer to render the responses for the previously defined APIs.
 
 ## Improvements
 1. Using UUID for storing unique customer and order details.
-2. Scalability
-3. Implementing unit test cases in the code repository
+2. Implementing unit test cases in the code repository.
+3. Improving the efficiency of the source code  
