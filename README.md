@@ -83,7 +83,7 @@ The Flask application will be running on http://127.0.0.1:5000
 ## 8 . Frontend
 The project uses streamlit as a front-end that enables the users to render the API responses dynamically. An extra API is also developed to render the order details of active customers.
 
-Run the following command in the same virtual environment in a separate terminal to run the streamlit application
+Run the following command in the same virtual environment in a separate terminal to run the streamlit application. (Execute the command on Step 3 before executing the command below)
 ```
 streamlit run streamlit_app.py
 ```
@@ -92,7 +92,7 @@ streamlit run streamlit_app.py
 
 
 ## 9 . Task 3: ETL Script
-Run the following command in the same virtual environment in a separate terminal to run the ETL script
+Run the following command in the same virtual environment in a separate terminal to run the ETL script. (Execute the command on Step 3 before executing the command below)
 ```
 python etl_script.py
 ```
