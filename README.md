@@ -4,13 +4,13 @@ Project to implement Flask APIs with Streamlit frontend and PostgreSQL database.
 ## Technology Stack
 
 1. PostgreSQL
-PostgreSQL is used to manage structured, relational data with enforced integrity constraints. It uses Multi-Version Concurrency Control that performs consistently well in high-concurrency systems and ensures data durability using a mechanism called Write-Ahead Logging (WAL).
+- PostgreSQL is used to manage structured, relational data with enforced integrity constraints. It uses Multi-Version Concurrency Control that performs consistently well in high-concurrency systems and ensures data durability using a mechanism called Write-Ahead Logging (WAL).
 
 2. Python Flask Framework
-The Flask ecosystem provides numerous libraries and extensions for various functionalities like database integration, authentication (Flask-JWT) etc. It offers a powerful routing system that enables developers to define URL patterns and map them to specific functions or resources. 
+- The Flask ecosystem provides numerous libraries and extensions for various functionalities like database integration, authentication (Flask-JWT) etc. It offers a powerful routing system that enables developers to define URL patterns and map them to specific functions or resources. 
 
 3. Streamlit
-In this assessment, streamlit is chosen as the frontend layer for prototyping applications making it suitable for rendering API responses interactively.
+- In this assessment, streamlit is chosen as the frontend layer for prototyping applications making it suitable for rendering API responses interactively.
 
 ## Application Data Flow Achitecture
 The architecture is organized into the following stages.
