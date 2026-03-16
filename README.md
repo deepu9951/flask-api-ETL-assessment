@@ -91,7 +91,7 @@ streamlit run streamlit_app.py
 - The application will be acting as a frontend layer to render the responses for the previously defined APIs.
 
 
-## 8 . Task 3: ETL Script
+## 9 . Task 3: ETL Script
 Run the following command in the same virtual environment in a separate terminal to run the ETL script
 ```
 python etl_script.py
