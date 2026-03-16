@@ -58,8 +58,8 @@ pip install -r requirements.txt
 POSTGRES_HOST =  <host_name>     <br />
 POSTGRES_PORT = 5432 (Typically) <br />
 POSTGRES_DB =  <your_database_name>       <br />
-POSTGRES_USER = <your_database_username>
-POSTGRES_PASSWORD = <your_password>
+POSTGRES_USER = <your_database_username>  <br />
+POSTGRES_PASSWORD = <your_password> 
 
 ## 6 . Task 1: Set up Databases
 ```
